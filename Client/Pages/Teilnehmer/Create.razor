@@ -1,0 +1,379 @@
+﻿@page "/"
+@using Formular1.Shared
+<h3>Create</h3>
+
+
+    <div class="text-center"><h1>Autofit Kongress Essen 20.05.2022</h1></div>
+    <div class="card mb-3">
+        <img src="1688601-100-dpi-rgb.png.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Willkommen in Essen</h5>
+            <p class="card-text">
+                AUTOFIT KONGRESS 2000
+
+                Der Autofit Kongress 2022 hat begonnen!
+
+                In Kürze informieren wir Euch über alle Neuigkeiten, die heute präsentiert werden, z.B. über die neue Autofahrer App, die jetzt noch mehr Servicemöglichkeiten und eine noch direktere Verbindung zur Werkstatt bietet.
+
+                Lasst Euch überraschen!
+            </p>
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <fieldset disabled>
+        <div class="col-md-4">
+
+            <label for="validationCustom01" class="form-label"> <h4> Werkstatt</h4> </label>
+            <input type="text" class="form-control" id="validationCustom01" value="AUTOFIT Mustermann">
+            <br />
+            <input type="text" class="form-control" id="validationCustom01" value="Langemarckstraße 34" required>
+            <br />
+            <input type="text" class="form-control" id="validationCustom01" value="45141 Essen" required>
+
+        </div>
+        <br />
+        <br />
+
+        <div class="col-md-4">
+            <label class="form-label"><h4>Inhaber/GF</h4></label>
+            <input type="text" class="form-control" value="Max Mustermann" required>
+
+        </div>
+        <br />
+    </fieldset>
+
+    <!--@*.....................Teilnahme Autofitkongress........................*@-->
+    <br />
+    <div class="text-center"><h2>Teilnahme Autofitkongress Fr 20.05.2022</h2></div>
+
+<EditForm Model="@Teilnehmer" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+
+    <label class="form-label"> Anrede </label>
+    <form id="selectform">
+    <div class="form-check ">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="anrede" value="herr" @onchange="OnChange">
+        <label class="form-check-label" for="anrede">
+            Herr
+        </label>
+    </div>
+    <div class="form-check ">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" value="frau" id="anrede" @onchange="OnChange">
+        <label class="form-check-label" for="anrede">
+            Frau
+        </label>
+    </div><br />
+    </form>
+    <div class="row">
+        <div class="col-md-4">
+            <br />
+            <label for="inputState" class="form-label">Ich nehme teil</label>
+            <select id="inputState" class="form-select">
+                <option selected>Bitte Wählen</option>
+                <option>Ja</option>
+            </select>
+        </div>
+        <br />
+        <div class="col-md-4">
+            <br />
+            <label class="form-label">Teilnehmer  Name</label>
+            <input type="text" class="form-control"  @bind-value="Teilnehmer.Name" >
+
+        </div>
+        <br />
+        <div class="mb-3 col-md-4">
+            <br />
+            <label for="E-Mail" class="form-label">Teilnehmer  E-Mail</label>
+            <input type="email" class="form-control" id="E-Mail" @bind-value="Teilnehmer.Email">
+        </div>
+        <br />
+
+        <div class="col-md-4">
+            <br />
+            <label for="inputState" class="form-label">Kommen Sie mit Begleitung ?</label>
+            <select id="inputState" class="form-select">
+                <option selected>Bitte Wählen</option>
+                <option>Ja</option>
+                <option>Nein</option>
+            </select>
+            <br />
+        </div>
+
+
+    </div>
+
+    <label for="" class="form-label"> Anrede </label>
+    <form id="selectform">
+    <div class="form-check col-md-4">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value="herr" @onchange="OnChange">
+        <label class="form-check-label" for="flexRadioDefault3">
+            Herr
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" value="frau" @onchange="OnChange">
+        <label class="form-check-label" for="flexRadioDefault4">
+            Frau
+        </label>
+        <br />
+    </div>
+    </form>
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <br />
+            <label class="form-label">Teilnehmer 2 Name</label>
+            <input type="text" class="form-control" @bind-value="Teilnehmer.BgName">
+
+        </div>
+        <br />
+        <div class="mb-3 col-md-4">
+            <br />
+            <label for="E-Mail" class="form-label">Teilnehmer 2 E-Mail</label>
+            <input type="email" class="form-control" id="E-Mail" @bind-value="Teilnehmer.BgEmail">
+            <br />
+        </div>
+    </div>
+    @*</div>
+    </EditForm>*@
+    <!--@*..........................................Hotelzimmer................................................*@-->
+    <div class="text-center"><h2>Hotelzimmer</h2></div>
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+            <label class="form-label">Ich benötige eine Übernachtungsmöglichkeit</label>
+            <select id="inputState" class=form-select>
+                <option>Ja</option>
+            </select>
+        </div>
+        <br />
+        <div class="col-lg-3 col-sm-6 col-md-4">
+            <label for="startDate">Anreisedatum</label>
+            <input id="startDate" class="form-control" type="date" />
+            <span id="startDateSelected"></span>
+
+        </div>
+        <br />
+        <div class="col-lg-3 col-sm-6 col-md-4">
+            <label for="endDate">Abreisetag</label>
+            <input id="endDate" class="form-control" type="date" />
+            <span id="endDateSelected"></span>
+        </div>
+
+
+
+        <div class="col-md-5">
+            <br />
+            <div class="form-label">Einzelzimmer / Doppelzimmer</div>
+            <form id="selectform">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" value="einzelzimmer" @onchange="OnChange">
+                <label class="form-check-label" for="flexRadioDefault5">
+                    Einzelzimmer
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6" value="doppelzimmer" @onchange="OnChange" >
+                <label class="form-check-label" for="flexRadioDefault6">
+                    Doppelzimmer
+                </label>
+            </div>
+            </form>
+        </div>
+
+
+    </div>
+
+
+    <!--@*..................Hinweis...............................................................*@-->
+    <br />
+    <p class="text-danger fs-5">Hinweis:</p>
+    <p class="fs-5">Wenn Du bis Sonntag bleiben möchtest,kümmer Dich selbst drum</p>
+
+
+    <!--@*......................Teilnahme PV Live (21.05., 22.05.).................................*@-->
+
+    <div class="text-center"><h2>Teilnahme PV Live (21.05., 22.05.)</h2></div>
+    <br />
+    <div class="row">
+        <div class="col-4">
+            <label for="inputState" class="form-label">Ich nehme teil</label>
+            <select id="inputState" class="form-select">
+                <option>Ja, ich nehme teil</option>
+            </select>
+
+        </div>
+
+        <div class="col-4">
+            <div class="form-label">Ich komme am Samstag</div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadio06" value="Ja,samstag" @onchange="OnChange" />
+                <label class="form-check-label" for="flexRadio06">
+                    Ja
+                </label>
+                <br />
+
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadio06" value="Nein,samstag" @onchange="OnChange"/>
+                <label class="form-check-label" for="flexRadio06">
+                    Nein
+                </label>
+            </div>
+
+        </div>
+        <div class="col-4">
+            <div class="form-label">Ich komme am Sonntag</div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadio07" value="Ja,sonntag" @onchange="OnChange" />
+                <label class="form-check-label" form="flexRadio07">
+                    Ja
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadio08" value="Nein,sonntag" @onchange="OnChange" />
+                <label class="form-check-label" for="flexRadio08">
+                    Nein
+                </label>
+            </div>
+
+        </div>
+
+        <br />
+
+    </div>
+
+    <!--<div class="col-4">
+        <div class="form-group">
+            <label for="exampleSelect" class="form-label mt-4">Ich bringe meine Kollegen mit</label>
+            <input class="form-control" id="readOnlyInput" type="text" placeholder="Anzahl der Kollegen" readonly="">
+            <select multiple="" class="form-select" id="exampleSelect">
+
+                <option id1>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+
+
+
+                <option value=opid1>1</option>
+                <option value=opid2>2</option>
+                <option value=opid3>3</option>
+                <option value=opid4>4</option>
+                <option value=opid5>5</option>
+                <option value=opid6>6</option>
+                <option value=opid7>7</option>
+                <option value=opid8>8</option>
+                <option value=opid9>9</option>
+                <option value=opid10>10</option>
+
+
+            </select>
+            <br />
+        </div>
+    </div>-->
+
+    <button onclick="showContent()">Teilnehmer Hinzüfugen</button>
+
+
+    <template>
+
+        <h2>Teilnehmer</h2>
+        <div class="form-label ">Anredr</div>
+        <form id="selectform">
+            <div class="form-check ">
+                <input class="form-check-input" type="radio" name="flexradioDefault3" id="flexRadio10" />
+                <label class="form form-check-label" for="flexRadio10">
+                    Herr
+                </label>
+            </div>
+            <div class="form-check">
+                <input class=" form-check-input" type="radio" name="flexradioDefault3" id="flexRadio10" />
+                <label class="form-check-label" for="flexRadio10">
+                    Frau
+                </label>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-md-4">
+                <br />
+                <div class="form-label ">Name </div>
+                <input text="text" class="form-control" value="Max Mustermann" required />
+            </div>
+
+            <div class="mb-3 col-md-4">
+                <br />
+                <label for="E-Mail" class="form-label">E-Mail </label>
+                <input type="email" class="form-control" id="E-Mail" placeholder="max.mustermann@autofit.de">
+            </div>
+
+
+            <div class="col-md-4">
+                <br />
+                <form id="selectform">
+                    <div class="form-label">Minderjährig</div>
+                    <div class="form-check ">
+                        <input class="form-check-input" type="radio" name="flexradioDefault4" id="flexRadio12" />
+                        <label class="form form-check-label" for="flexRadio12">
+                            Ja
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexradioDefault4" id="flexRadio12" />
+                        <label class="form-check-label" for="flexRadio12">
+                            Nein
+                        </label>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+       <button onclick="showContent()">Teilnehmer Hinzüfugen</button>
+    </template>
+      <br />
+
+      <button type="button" class="btn btn-success" @onclick="SaveTeilnehmer">
+        @ButtonText
+    </button>
+    @if(_test)
+    {
+        <div>Test</div>
+    }
+</EditForm>
+@code{
+    [Parameter] public Teilnehmer Teilnehmer{ get; set; }
+    [Parameter] public HotelZimmer HotelZimmer { get; set; }
+    [Parameter] public TeilnehmerPVLive TeilnehmerPVLive{ get; set; }
+    [Parameter] public string ButtonText { get; set; } = "save";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+
+    private bool _test;
+    protected override void OnInitialized()
+    {
+        Teilnehmer = new Teilnehmer();
+    }
+
+    private void OnChange(ChangeEventArgs args)
+    {
+        Console.WriteLine($"Du hast {args.Value.ToString()} angeklickt.");
+        //CurrentValueAsString = args.Value.ToString();
+    }
+
+    private void SaveTeilnehmer()
+    {
+        _test = true;
+        Teilnehmer bla = new Teilnehmer();
+        bla = Teilnehmer;
+        var test = Teilnehmer;
+    }
+    }
